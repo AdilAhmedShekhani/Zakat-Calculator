@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>ZAKAT CALCULATOR</title>
+  </head>
+  <body>
+    <div class="bg-sky-500/50 ...">
+      <div class="max-h-full overflow-auto">
+    <div class="flex flex-row gap-4 justify-around items-start mt-12 h-screen">
+      <div class="flex flex-col gap-4 justify-center items-center">
+        <div>
+          <label
+            for="Cash"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Cash At Home</label
+          >
+          <div class="relative mt-2 rounded-md shadow-sm">
+            <input
+              type="text"
+              name="Cash-c"
+              class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="Cash-b"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Cash at Bank</label
+          >
+          <div class="relative mt-2 rounded-md shadow-sm">
+            <input
+              type="text"
+              name="Cash-b"
+              class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="Share"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Shares / Gold / Silver</label
+          >
+          <div class="relative mt-2 rounded-md shadow-sm">
+            <input
+              type="text"
+              name="Share"
+              class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="Property"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Property as Investment</label
+          >
+          <div class="relative mt-2 rounded-md shadow-sm">
+            <input
+              type="text"
+              name="Property"
+              class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="Otherincome"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Other Income</label
+          >
+          <div class="relative mt-2 rounded-md shadow-sm">
+            <input
+              type="text"
+              name="Otherincome"
+              class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="Debts"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Debts</label
+          >
+          <div class="relative mt-2 rounded-md shadow-sm">
+            <input
+              type="text"
+              name="Debts"
+              class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <div>
+          <label
+            for="Expenses"
+            class="block text-sm font-medium leading-6 text-gray-900"
+            >Expenses</label
+          >
+          <div class="relative mt-2 rounded-md shadow-sm">
+            <input
+              type="text"
+              name="Expenses"
+              class="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+              placeholder="0.00"
+            />
+          </div>
+        </div>
+        <button
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          Calculate
+        </button>
+      </div>
+      <div class="card">
+        <div class="flex flex-col gap-4">
+          <h2>
+            <b> <u> Zakat Calculation </u></b>
+          </h2>
+          <p>Total Cash: <b id="totalCash"></b></p>
+          <p>Total Shares / Gold / Silver Value: <b id="totalShare"></b></p>
+          <p>Total Property: <b id="property"></b></p>
+          <p>Other Income: <b id="o-income"></b></p>
+          <p>Total Asset Liable For Zakat: <b id="t-asset"></b></p>
+          <p>Total Deduction: <b id="t-deduct"></b></p>
+          <p>Amount (After Deduction)<b id="amount"></b></p>
+          <p>Zakat Amount <b id="total"></b></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </body>
+  <script>
+    const calculate = () => {
+      const cash = parseFloat(
+        document.querySelector('input[name="Cash-c"]').value
+      );
+      const cashBank = parseFloat(
+        document.querySelector('input[name="Cash-b"]').value
+      );
+      const share = parseFloat(
+        document.querySelector('input[name="Share"]').value
+      );
+      const property = parseFloat(
+        document.querySelector('input[name="Property"]').value
+      );
+      const otherIncome = parseFloat(
+        document.querySelector('input[name="Otherincome"]').value
+      );
+      const debts = parseFloat(
+        document.querySelector('input[name="Debts"]').value
+      );
+      const expenses = parseFloat(
+        document.querySelector('input[name="Expenses"]').value
+      );
+
+      const totalCash = cash + cashBank;
+      const totalShare = share;
+      const Property = property;
+      const Oincome = otherIncome;
+      const Deduction = debts + expenses;
+
+      document.getElementById("totalCash").innerText = totalCash.toFixed(0);
+      document.getElementById("totalShare").innerText = totalShare.toFixed(0);
+      document.getElementById("property").innerText = property.toFixed(0);
+      document.getElementById("o-income").innerText = otherIncome.toFixed(0);
+      document.getElementById("t-deduct").innerText = Deduction.toFixed(0);
+
+      const totalasset = totalCash + totalShare + property + Oincome;
+
+      const total = totalCash + totalShare + property + Oincome - Deduction;
+
+      const Zaka = total * 0.025;
+
+      document.querySelector("#amount").innerHTML = total;
+      document.querySelector("#t-asset").innerHTML = totalasset;
+      document.querySelector("#total").innerHTML = Zaka;
+    };
+
+    document.querySelector("button").addEventListener("click", calculate);
+  </script>
+</html>
